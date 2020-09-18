@@ -10,13 +10,14 @@ const Tile = ({ src, boardX, boardY, imgX, imgY, xSteps, ySteps }) => {
     top: '0',
     left: '0',
     transition: 'all .2s',
+    border: '1px solid rgba(0,0,0,0.1)',
   };
 
   const imgStyle = {
     width: 100 * xSteps + '%',
     height: 100 * ySteps + '%',
     marginLeft: -100 * imgX + '%',
-    marginTop: -100 * imgY + '%',
+    marginTop: (-100 * imgY * xSteps) / ySteps + '%',
   };
 
   return (
