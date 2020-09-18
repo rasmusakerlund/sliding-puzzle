@@ -22,10 +22,11 @@ const Board = () => {
   const Y_STEPS = 4;
   const state = createInitialState(X_STEPS, Y_STEPS);
 
-  const src = 'https://source.unsplash.com/random/800x800';
+  const src = 'https://source.unsplash.com/random/800x600';
   const style = {
     position: 'relative',
     width: '80vmin',
+    height: '60vmin',
     margin: '0 auto',
   };
 
