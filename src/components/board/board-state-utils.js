@@ -16,6 +16,28 @@ export function getSolvedState(xSteps, ySteps) {
   return state;
 }
 
+export function shuffleBoard(state) {
+  for (let i = 0; i < 100; i++) {
+    switch (Math.floor(Math.random() * 4)) {
+      case 0:
+        state = moveLeft(state);
+        break;
+      case 1:
+        state = moveRight(state);
+        break;
+      case 2:
+        state = moveUp(state);
+        break;
+      case 3:
+        state = moveDown(state);
+        break;
+      default:
+        throw new Error();
+    }
+  }
+  return state;
+}
+
 export function boardReducer(state, action) {
   switch (action.type) {
     case 'ARROW_LEFT':

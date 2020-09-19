@@ -1,19 +1,23 @@
 import React, { useReducer, useEffect } from 'react';
 import Tile from '../tile/tile';
-import { getSolvedState, boardReducer } from './board-state-utils';
+import {
+  getSolvedState,
+  boardReducer,
+  shuffleBoard,
+} from './board-state-utils';
 
 const Board = () => {
-  const X_STEPS = 2;
-  const Y_STEPS = 3;
+  const X_STEPS = 4;
+  const Y_STEPS = 4;
   const [state, dispatch] = useReducer(
     boardReducer,
-    getSolvedState(X_STEPS, Y_STEPS)
+    shuffleBoard(getSolvedState(X_STEPS, Y_STEPS))
   );
-  const src = 'https://source.unsplash.com/random/800x600';
+  const src = 'https://source.unsplash.com/random/800x800';
   const style = {
     position: 'relative',
     width: '80vmin',
-    height: '60vmin',
+    height: '80vmin',
     margin: '0 auto',
   };
 
