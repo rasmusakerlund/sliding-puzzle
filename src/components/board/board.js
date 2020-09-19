@@ -1,27 +1,14 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Tile from '../tile/tile';
-
-const createInitialState = (xSteps, ySteps) => {
-  const state = [];
-
-  for (let i = 0; i < xSteps * ySteps - 1; i++) {
-    state.push({
-      id: i,
-      boardX: i % xSteps,
-      boardY: Math.floor(i / xSteps),
-      imgX: i % xSteps,
-      imgY: Math.floor(i / xSteps),
-    });
-  }
-
-  return state;
-};
+import { getSolvedState, boardReducer } from './board-state-utils';
 
 const Board = () => {
-  const X_STEPS = 3;
-  const Y_STEPS = 4;
-  const state = createInitialState(X_STEPS, Y_STEPS);
-
+  const X_STEPS = 2;
+  const Y_STEPS = 3;
+  const [state, dispatch] = useReducer(
+    boardReducer,
+    getSolvedState(X_STEPS, Y_STEPS)
+  );
   const src = 'https://source.unsplash.com/random/800x600';
   const style = {
     position: 'relative',
@@ -30,33 +17,29 @@ const Board = () => {
     margin: '0 auto',
   };
 
-  // useEffect(() => {
-  //   const eventListener = (event) => {
-  //     switch (event.key) {
-  //       case 'ArrowLeft':
-  //         setX(x - 1);
-  //         break;
-  //       case 'ArrowRight':
-  //         setX(x + 1);
-  //         break;
-  //       case 'ArrowUp':
-  //         setY(y - 1);
-  //         break;
-  //       case 'ArrowDown':
-  //         setY(y + 1);
-  //         break;
-  //       default:
-  //     }
-  //   };
+  useEffect(() => {
+    const eventListener = (event) => {
+      switch (event.key) {
+        case 'ArrowLeft':
+          dispatch({ type: 'ARROW_LEFT' });
+          break;
+        case 'ArrowRight':
+          dispatch({ type: 'ARROW_RIGHT' });
+          break;
+        case 'ArrowUp':
+          dispatch({ type: 'ARROW_UP' });
+          break;
+        case 'ArrowDown':
+          dispatch({ type: 'ARROW_DOWN' });
+          break;
+        default:
+      }
+    };
 
-  //   document.addEventListener('keydown', eventListener);
-  //   return () => {
-  //     document.removeEventListener('keydown', eventListener);
-  //   };
-  // });
-
-  const renderedTiles = state.map((tile) => {
-    return <Tile {...tile} src={src} xSteps={X_STEPS} ySteps={Y_STEPS} />;
+    document.addEventListener('keydown', eventListener);
+    return () => {
+      document.removeEventListener('keydown', eventListener);
+    };
   });
 
   return (
@@ -66,7 +49,9 @@ const Board = () => {
         alt="Board Background"
         style={{ opacity: '0.25', width: '100%' }}
       />
-      {renderedTiles}
+      {state.map((tile) => (
+        <Tile {...tile} src={src} />
+      ))}
     </div>
   );
 };
