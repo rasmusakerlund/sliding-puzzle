@@ -111,3 +111,16 @@ function getEmptyLocation(state) {
     }
   }
 }
+
+export function boardsAreEqual(board1, board2) {
+  for (let i = 0; i < board1.length; i++) {
+    if (
+      board1[i].boardX !== board2[i].boardX ||
+      board1[i].boardY !== board2[i].boardY
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}

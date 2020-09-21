@@ -10,7 +10,7 @@ const Tile = ({ src, boardX, boardY, imgX, imgY, xSteps, ySteps }) => {
     top: '0',
     left: '0',
     transition: 'all .2s',
-    border: '1px solid rgba(0,0,0,0)',
+    clipPath: 'polygon(1% 1%, 99% 1%, 99% 99%, 1% 99%)',
   };
 
   const imgStyle = {
