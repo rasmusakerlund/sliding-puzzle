@@ -17,7 +17,6 @@ const Board = () => {
   const style = {
     position: 'relative',
     width: '80vmin',
-    height: '80vmin',
     margin: '0 auto',
   };
 
@@ -51,7 +50,7 @@ const Board = () => {
       <img
         src={src}
         alt="Board Background"
-        style={{ opacity: '0.25', width: '100%' }}
+        style={{ opacity: '0.25', width: '100%', display: 'block' }}
       />
       {state.map((tile) => (
         <Tile {...tile} src={src} />
