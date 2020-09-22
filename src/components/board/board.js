@@ -7,16 +7,14 @@ import {
   boardsAreEqual,
 } from './board-state-utils';
 
-const Board = () => {
-  const X_STEPS = 4;
-  const Y_STEPS = 4;
-  const solvedState = getSolvedState(X_STEPS, Y_STEPS);
+const Board = ({ src, imageWidth, imageHeight, xSteps, ySteps }) => {
+  const solvedState = getSolvedState(xSteps, ySteps);
   const [state, dispatch] = useReducer(boardReducer, shuffleBoard(solvedState));
   const isSolved = boardsAreEqual(solvedState, state);
-  const src = 'https://source.unsplash.com/random/1080x1080';
   const style = {
     position: 'relative',
-    width: '80vmin',
+    width: (100 * imageWidth) / imageHeight + 'vh',
+    maxWidth: '100vw',
     margin: '0 auto',
   };
 
