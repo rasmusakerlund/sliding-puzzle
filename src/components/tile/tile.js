@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Tile = ({ src, boardX, boardY, imgX, imgY, xSteps, ySteps }) => {
+const Tile = ({
+  src,
+  boardX,
+  boardY,
+  imgX,
+  imgY,
+  xSteps,
+  ySteps,
+  dispatch,
+}) => {
   const divStyle = {
     position: 'absolute',
     width: 100 / xSteps + '%',
@@ -21,7 +30,16 @@ const Tile = ({ src, boardX, boardY, imgX, imgY, xSteps, ySteps }) => {
   };
 
   return (
-    <div style={divStyle}>
+    <div
+      style={divStyle}
+      onClick={() =>
+        dispatch({
+          type: 'CLICK',
+          boardX,
+          boardY,
+        })
+      }
+    >
       <img src={src} alt="Tile" style={imgStyle} />
     </div>
   );

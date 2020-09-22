@@ -60,7 +60,7 @@ const Board = () => {
         }}
       />
       {state.map((tile) => (
-        <Tile {...tile} src={src} />
+        <Tile {...tile} src={src} dispatch={dispatch} />
       ))}
     </div>
   );

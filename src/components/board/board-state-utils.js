@@ -48,6 +48,9 @@ export function boardReducer(state, action) {
       return moveUp(state);
     case 'ARROW_DOWN':
       return moveDown(state);
+    case 'CLICK':
+      return moveTileFromXY(state, action.boardX, action.boardY);
+
     default:
       throw new Error();
   }
@@ -97,6 +100,43 @@ function moveTile(state, oldX, oldY, newX, newY) {
       return tile;
     }
   });
+}
+
+function moveTileFromXY(state, x, y) {
+  const [emptyX, emptyY] = getEmptyLocation(state);
+  if (emptyX === x) {
+    return shiftEmptyLocationVertically(state, emptyY, y);
+  } else if (emptyY === y) {
+    return shiftEmptyLocationHorizontally(state, emptyX, x);
+  } else {
+    return state;
+  }
+}
+
+function shiftEmptyLocationHorizontally(state, initialX, targetX) {
+  while (initialX !== targetX) {
+    if (initialX > targetX) {
+      state = moveRight(state);
+      initialX--;
+    } else {
+      state = moveLeft(state);
+      initialX++;
+    }
+  }
+  return state;
+}
+
+function shiftEmptyLocationVertically(state, initialY, targetY) {
+  while (initialY !== targetY) {
+    if (initialY > targetY) {
+      state = moveDown(state);
+      initialY--;
+    } else {
+      state = moveUp(state);
+      initialY++;
+    }
+  }
+  return state;
 }
 
 function getEmptyLocation(state) {
