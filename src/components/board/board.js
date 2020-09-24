@@ -12,10 +12,12 @@ const Board = ({ src, imageWidth, imageHeight, xSteps, ySteps }) => {
   const [state, dispatch] = useReducer(boardReducer, shuffleBoard(solvedState));
   const isSolved = boardsAreEqual(solvedState, state);
   const style = {
-    position: 'relative',
+    position: 'absolute',
     width: (100 * imageWidth) / imageHeight + 'vh',
     maxWidth: '100vw',
-    margin: '0 auto',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
   };
 
   useEffect(() => {
