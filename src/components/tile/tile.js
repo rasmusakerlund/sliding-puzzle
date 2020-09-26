@@ -19,7 +19,7 @@ const Tile = ({
     top: '0',
     left: '0',
     transition: 'all .2s',
-    clipPath: 'polygon(1% 1%, 99% 1%, 99% 99%, 1% 99%)',
+    clipPath: 'polygon(2% 2%, 98% 2%, 98% 98%, 2% 98%)',
   };
 
   const imgStyle = {

@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import Tile from '../tile/tile';
 import {
   getSolvedState,
@@ -8,6 +8,7 @@ import {
 } from './board-state-utils';
 
 const Board = ({ src, imageWidth, imageHeight, xSteps, ySteps }) => {
+  const [imageIsLoaded, setImageIsLoaded] = useState(false);
   const solvedState = getSolvedState(xSteps, ySteps);
   const [state, dispatch] = useReducer(boardReducer, shuffleBoard(solvedState));
   const isSolved = boardsAreEqual(solvedState, state);
@@ -52,9 +53,10 @@ const Board = ({ src, imageWidth, imageHeight, xSteps, ySteps }) => {
       <img
         src={src}
         alt="Board Background"
+        onLoad={() => setImageIsLoaded(true)}
         style={{
           transition: 'opacity 1s',
-          opacity: isSolved ? '1' : '0.25',
+          opacity: isSolved ? '1' : '0.1',
           width: '100%',
           display: 'block',
         }}
@@ -62,6 +64,17 @@ const Board = ({ src, imageWidth, imageHeight, xSteps, ySteps }) => {
       {state.map((tile) => (
         <Tile {...tile} src={src} dispatch={dispatch} />
       ))}
+      {!imageIsLoaded && (
+        <h1
+          style={{
+            color: 'var(--light-color)',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
+        >
+          Loading random image from unsplash.com
+        </h1>
+      )}
     </div>
   );
 };
