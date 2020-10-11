@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sliding-puzzle/static/css/main.627de45f.chunk.css",
+    "main.js": "/sliding-puzzle/static/js/main.3547928d.chunk.js",
+    "main.js.map": "/sliding-puzzle/static/js/main.3547928d.chunk.js.map",
+    "runtime-main.js": "/sliding-puzzle/static/js/runtime-main.284da306.js",
+    "runtime-main.js.map": "/sliding-puzzle/static/js/runtime-main.284da306.js.map",
+    "static/js/2.e252d2ad.chunk.js": "/sliding-puzzle/static/js/2.e252d2ad.chunk.js",
+    "static/js/2.e252d2ad.chunk.js.map": "/sliding-puzzle/static/js/2.e252d2ad.chunk.js.map",
+    "index.html": "/sliding-puzzle/index.html",
+    "precache-manifest.e627b27180bcef87f56865276e1a5b62.js": "/sliding-puzzle/precache-manifest.e627b27180bcef87f56865276e1a5b62.js",
+    "service-worker.js": "/sliding-puzzle/service-worker.js",
+    "static/css/main.627de45f.chunk.css.map": "/sliding-puzzle/static/css/main.627de45f.chunk.css.map",
+    "static/js/2.e252d2ad.chunk.js.LICENSE.txt": "/sliding-puzzle/static/js/2.e252d2ad.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.284da306.js",
+    "static/js/2.e252d2ad.chunk.js",
+    "static/css/main.627de45f.chunk.css",
+    "static/js/main.3547928d.chunk.js"
+  ]
+}
