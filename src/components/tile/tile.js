@@ -32,13 +32,24 @@ const Tile = ({
   return (
     <div
       style={divStyle}
-      onClick={() =>
+      onMouseDown={() => {
         dispatch({
           type: 'CLICK',
           boardX,
           boardY,
-        })
-      }
+        });
+      }}
+      onTouchStart={() => {
+        dispatch({
+          type: 'CLICK',
+          boardX,
+          boardY,
+        });
+      }}
+      onTouchEnd={(e) => {
+        // prevents onMouseDown from being triggered.
+        e.preventDefault();
+      }}
     >
       <img src={src} alt="Tile" style={imgStyle} />
     </div>
